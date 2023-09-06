@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CreateNote from './CreateNote';
 async function getNotes() {
     const res = await fetch('https://mydbwebsite.com/api/notes',
     {cache: 'no-store'}
@@ -18,6 +19,8 @@ export default async function NotesPage() {
                     return <Note key={note.id} note={note}/>
                 })}
             </div>
+
+            <CreateNote />
         </div>
     )
 }
