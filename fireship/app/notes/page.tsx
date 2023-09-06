@@ -1,6 +1,8 @@
 import Link from 'next/link';
 async function getNotes() {
-    const res = await fetch('https://mydbwebsite.com/api/notes');
+    const res = await fetch('https://mydbwebsite.com/api/notes',
+    {cache: 'no-store'}
+    );
     const data = await res.json();
     return data?.items as any[];
 }
