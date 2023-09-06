@@ -7,8 +7,25 @@ export default function CreateNote() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
+    const create = async() => {
+
+        await fetch('https://api.com/notes/records', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title,
+                content
+            }),
+        });
+
+        setContent('');
+        setTitle('');
+    }
+
     return(
-        <form>
+        <form onSubmit={create}>
             <h3>Create a new Note</h3>
             <input
                 type='text'
