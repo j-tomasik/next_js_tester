@@ -14,5 +14,6 @@ model Todo {
   id String @id @default(uuid())
   title String
   complete Boolean
-  createdAt 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
