@@ -3,6 +3,12 @@ import Link from "next/link";
 
 async function createTodo(data: FormData) {
     "use server"
+//.get() will grab by the name of html input element
+    const title = data.get('title')?.valueOf()
+    
+    if (typeof title !== 'string' || title.length === 0) {
+        throw new Error
+    }
 
 }
 
