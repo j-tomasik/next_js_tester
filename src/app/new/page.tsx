@@ -1,15 +1,16 @@
 import Link from "next/link";
+import prisma from '@/db';
 
 
 async function createTodo(data: FormData) {
     "use server"
 //.get() will grab by the name of html input element
     const title = data.get('title')?.valueOf()
-    
-    if (typeof title !== 'string' || title.length === 0) {
-        throw new Error
-    }
 
+    if (typeof title !== 'string' || title.length === 0) {
+        throw new Error("Invalid Title")
+    }
+    await prisma.todo.create({ data: { title, complete: false}})
 }
 
 export default function Page() {
